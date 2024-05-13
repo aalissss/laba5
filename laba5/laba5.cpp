@@ -114,7 +114,7 @@ struct HashSet {
         for (int i = 0; i < hashSize; i++) {
             Node* temp = table[i];
             while (temp != nullptr) {
-                arr[j] = table[i]->data;
+                arr[j] = temp->data;
                 j++;
                 temp = temp->next;
             }
