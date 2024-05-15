@@ -30,7 +30,7 @@ struct HashSet {
         for (char c : word) {
             hash += c;
         }
-        return hash % hashSize;
+        return abs(hash % hashSize);
     }
 
     //добавление элемента в множество
@@ -60,7 +60,7 @@ struct HashSet {
                 return;
             }
             while (temp->next != nullptr) {
-                if (temp->next->data != word) {
+                if (temp->next->data == word) {
                     Node* current = temp->next->next;
                     delete temp->next;
                     temp->next = current;
