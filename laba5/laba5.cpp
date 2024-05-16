@@ -37,15 +37,22 @@ struct HashSet {
     void add(string word) {
         int index = hashFunction(word);
         Node* temp = table[index];
-        cnt++;
         if (temp == nullptr) {
             table[index] = new Node{ word };
+            cnt++;
+            return;
+        }
+        if (temp->data == word) {
             return;
         }
         while (temp->next != nullptr) {
+            if (temp->next->data == word) {
+                return;
+            }
             temp = temp->next;
         }
         temp->next = new Node{ word };
+        cnt++;
     }
 
     //удаление элемента из множества
